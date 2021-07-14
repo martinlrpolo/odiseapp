@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ODISEAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-card class="post" *ngFor="let adventure of adventures" [routerLink]="['adventure']">
+    <ion-card-header>
+      <ion-item class="header" lines="none">
+        <ion-avatar slot="start">
+          <img src="{{profile_url}}{{adventure.user.pic}}" />
+        </ion-avatar>
+        <ion-label>
+          <strong>
+              {{adventure.user.fullname}}
+          </strong>
+          <i class="date">
+            {{adventure.create_at| date :'dd-MMM-yyyy'}}
+          </i>
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+      <p style="margin-bottom: 15px;">
+        {{adventure.name}}
+      </p>
+      <ion-badge color="primary" slot="end" style="margin-top: -12px;">
+        {{adventure.currency.symbol}}  
+        {{adventure.price}}
+      </ion-badge>
+      </ion-item>
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide>
+          <img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/2018/europeslostf.jpg" />
+        </ion-slide>
+        <ion-slide>
+            <img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/2018/europeslostf.jpg" />
+        </ion-slide>
+        <ion-slide>
+            <img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/2018/europeslostf.jpg" />
+        </ion-slide>
+      </ion-slides>
+      <div class="footer">
+        <ion-chip color="warning">
+          <ion-icon name="star"></ion-icon>
+          <ion-label>{{adventure.security}}</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary">
+          <ion-icon name="pin"></ion-icon>
+          <ion-label>{{adventure.vehicle.description}}</ion-label>
+        </ion-chip>
+        <ion-chip color="success">
+          <ion-icon name="cash"></ion-icon>
+          <ion-label>{{adventure.budget}}</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-content>
+    
+    
+  </ion-card>
+  
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+
+</ion-content>

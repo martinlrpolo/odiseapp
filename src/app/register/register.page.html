@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button [routerLink]="['/login']"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Registrate</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <form style="width:100%;" [formGroup]="data" (ngSubmit)="register()">
+        <ion-list>
+          
+          <ion-item  class="ion-text-center">
+            <ion-title>¡Haz parte de la aventura!</ion-title>
+          </ion-item>
+          
+          <ion-item>
+              <ion-input type="text" placeholder="Nombre completo" formControlName="full_name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-input type="email" placeholder="Correo electrónico" formControlName="email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-input type="text" placeholder="Teléfono" formControlName="phone"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>País</ion-label>
+                <ion-select placeholder="Seleccionar país" formControlName="country">
+                <ion-select-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+          <ion-item>
+              <ion-input type="password" placeholder="Contraseña" formControlName="password"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-input type="password" placeholder="Repetir contraseña" formControlName="re_password"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <input type="text" formControlName="re_password" style="display:none" />
+            <label class="file" title="">
+              <input style="display:none" type="file" onchange="this.parentNode.setAttribute('title', this.value.replace(/^.*[\\/]/, ''))" (change)="onFileChange($event)" accept=".jpg,.png,.jpeg" />
+            </label>
+          </ion-item>
+          
+          <div padding class="ion-text-center">
+              <ion-button color="primary" type="submit" style="width:70%;" [disabled]="!data.valid">
+                Ingresar
+              </ion-button>
+          </div>
+
+        </ion-list>
+      </form>
+
+</ion-content>

@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [routerLink]="['']"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{adventure.name}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+      </ion-avatar>
+      <ion-label>
+          <strong>
+            {{adventure.user.fullname}}
+          </strong>
+          <i class="date">
+            {{adventure.create_at}}
+          </i>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-item color="success" style="border: dashed white;">
+      <ion-icon name="card" slot="end"></ion-icon>
+      <ion-label>$ {{adventure.price}}</ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide>
+        <img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/2018/europeslostf.jpg" />
+      </ion-slide>
+      <ion-slide>
+          <img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/2018/europeslostf.jpg" />
+      </ion-slide>
+      <ion-slide>
+          <img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/2018/europeslostf.jpg" />
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+  <ion-card>
+    <ion-item color="success">
+      <ion-icon name="cash" slot="end"></ion-icon>
+      <ion-label>Presupuesto: $ {{adventure.budget}}</ion-label>
+    </ion-item>
+
+    <ion-item color="warning">
+      <ion-icon name="star" slot="end"></ion-icon>
+      <ion-label>Seguridad: {{adventure.security}}</ion-label>
+    </ion-item>
+
+    <ion-item color="secondary">
+      <ion-icon name="pin" slot="end"></ion-icon>
+      <ion-label>Vehículo: {{adventure.vehicle.description}}</ion-label>
+    </ion-item>
+
+    <ion-button expand="full" (click)="presentModal()">Ver más</ion-button>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-list-header>
+      <h3>
+        <strong>Paradas</strong>
+      </h3>
+    </ion-list-header>
+    <ion-list>
+
+      <ion-item-sliding *ngFor="let stop of adventure.stops">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>
+          <ion-label>Item Avatar</ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+            <ion-item-option (click)="unread(item)">
+                <ion-label>Parada # 1</ion-label>
+                <ion-icon name="navigate"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+
+      <ion-button expand="full">Agregar parada</ion-button>
+
+    </ion-list>
+  </ion-card>
+
+  <ion-card *ngIf="adventure.stops.length > 0">
+    <h3>Ruta</h3>
+  </ion-card>
+
+
+<ion-fab  vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="success">
+    <ion-icon name="cart"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content>

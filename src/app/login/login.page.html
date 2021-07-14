@@ -1,0 +1,31 @@
+<ion-content padding>
+    <ion-grid style="height: 100%">
+        <ion-row justify-content-center align-items-center style="height: 100%">
+
+            <form style="width:100%;" [formGroup]="data" (ngSubmit)="login()">
+              <ion-list>
+                <ion-item  class="ion-text-center">
+                  <ion-title>Odiseapp</ion-title>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="email" placeholder="Usuario" formControlName="email"></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                    <ion-input type="password" placeholder="Contraseña" formControlName="password"></ion-input>
+                </ion-item>
+                
+                <div padding class="ion-text-center">
+                    <ion-button color="primary" type="submit" style="width:70%;" [disabled]="!data.valid">
+                      Ingresar
+                    </ion-button>
+                    <hr/>
+                    <a [routerLink]="['/register']" routerDirection="forward">Registro</a>
+                </div>
+    
+              </ion-list>
+            </form>
+
+        </ion-row>
+      </ion-grid>
+</ion-content>
